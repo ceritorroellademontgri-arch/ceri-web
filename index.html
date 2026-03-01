@@ -72,7 +72,18 @@
 
     /* Layout */
     section{padding: 34px 0}
-    .panel{
+    .panel{/* HERO amb imatge de fons */
+section:first-of-type {
+  background-image:
+    linear-gradient(
+      rgba(5, 8, 19, 0.55),
+      rgba(5, 8, 19, 0.75)
+    ),
+    url("hero-ceri.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
       border:1px solid var(--line);
       background: var(--panel);
       border-radius: var(--r);
