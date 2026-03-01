@@ -13,17 +13,21 @@
       --panel-soft:rgba(255,255,255,.035);
       --line:rgba(255,255,255,.12);
       --text:rgba(255,255,255,.95);
-      --muted:rgba(255,255,255,.7);
+      --muted:rgba(255,255,255,.72);
       --accent:#f2c14e;
       --max:1100px;
       --r:18px;
+      --shadow: 0 16px 45px rgba(0,0,0,.38);
     }
 
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:linear-gradient(180deg,#050813,var(--bg));
+      background:
+        radial-gradient(900px 520px at 20% 10%, rgba(242,193,78,.12), transparent 60%),
+        radial-gradient(760px 520px at 80% 15%, rgba(92,200,255,.10), transparent 55%),
+        linear-gradient(180deg,#050813,var(--bg));
       color:var(--text);
       line-height:1.6;
     }
@@ -34,8 +38,8 @@
     header{
       position:sticky;
       top:0;
-      z-index:10;
-      background:rgba(5,8,19,.7);
+      z-index:20;
+      background:rgba(5,8,19,.70);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
@@ -53,22 +57,33 @@
       align-items:center;
       gap:12px;
       font-weight:900;
+      min-width: 260px;
     }
 
-    .logo{<img src="./logo-ceri.jpg" alt="Logo CERI" class="logo">
-  width:56px;
-  height:auto;
-  display:block;
-}
-  
-}
+    /* IMPORTANT: logo real (imatge) */
+    .logo{
+      width:56px;
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
+    }
+
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:.2px;
+      font-size:12.5px;
+      margin-top:2px;
     }
 
     .menu{
       display:flex;
       gap:16px;
-      font-weight:700;
+      font-weight:800;
       font-size:14px;
+      flex-wrap:wrap;
+      justify-content:center;
     }
 
     .menu a{color:var(--muted)}
@@ -78,13 +93,16 @@
       padding:10px 14px;
       border-radius:12px;
       border:1px solid var(--line);
-      font-weight:800;
+      font-weight:900;
       background:rgba(255,255,255,.04);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
     }
-
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.20);}
     .btn.primary{
       background:linear-gradient(135deg,#f2c14e,#f2c14eaa);
       color:#1b1406;
+      border-color: rgba(242,193,78,.65);
     }
 
     section{padding:60px 0}
@@ -92,7 +110,7 @@
     /* HERO amb imatge */
     .hero{
       background:
-        linear-gradient(rgba(5,8,19,.6),rgba(5,8,19,.8)),
+        linear-gradient(rgba(5,8,19,.62),rgba(5,8,19,.82)),
         url("hero-ceri.jpg");
       background-size:cover;
       background-position:center;
@@ -102,24 +120,29 @@
       font-size:clamp(36px,5vw,56px);
       line-height:1.05;
       margin:0 0 14px;
+      letter-spacing:-.6px;
     }
 
     .subtitle{
-      max-width:650px;
+      max-width:680px;
       color:var(--muted);
       font-size:17px;
+      margin:0;
     }
 
     .tagline{
       margin-top:18px;
       font-size:22px;
-      font-weight:900;
+      font-weight:950;
+      letter-spacing:-.2px;
     }
+    .tagline span{ color: var(--accent); }
 
     .grid2{
       display:grid;
       grid-template-columns:1.2fr .8fr;
       gap:24px;
+      align-items:stretch;
     }
 
     .panel{
@@ -127,14 +150,32 @@
       border:1px solid var(--line);
       border-radius:var(--r);
       padding:24px;
+      box-shadow: var(--shadow);
     }
 
-    .panel.soft{background:var(--panel-soft)}
+    .panel.soft{
+      background:var(--panel-soft);
+      box-shadow: none;
+    }
+
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-weight:900;
+      font-size:12.5px;
+      color:var(--muted);
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      margin-bottom: 14px;
+    }
 
     .bullets{
       list-style:none;
       padding:0;
-      margin:16px 0 0;
+      margin:14px 0 0;
       color:var(--muted);
     }
 
@@ -142,12 +183,12 @@
       padding:8px 0;
       border-top:1px dashed rgba(255,255,255,.15);
     }
-
     .bullets li:first-child{border-top:none}
 
     h2{
       font-size:26px;
       margin:0 0 12px;
+      letter-spacing:-.3px;
     }
 
     .services{
@@ -156,11 +197,44 @@
       gap:16px;
     }
 
+    /* Targetes serveis clicables */
     .service{
       background:rgba(255,255,255,.03);
       border:1px solid var(--line);
       border-radius:14px;
       padding:16px;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      min-height: 96px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .service:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.20);
+      background: rgba(255,255,255,.045);
+    }
+    .service b{
+      display:block;
+      font-size:15.5px;
+      letter-spacing:-.1px;
+      margin-bottom: 6px;
+    }
+    .service span{
+      display:block;
+      font-size:13.5px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    /* Contacte */
+    .contact-lines p{ margin:10px 0 0; color: var(--muted); }
+    .contact-lines a{ color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+    iframe{
+      border-radius:14px;
+      border:1px solid var(--line);
+      width:100%;
     }
 
     footer{
@@ -169,14 +243,132 @@
       color:var(--muted);
     }
 
-    iframe{
-      border-radius:14px;
-      border:1px solid var(--line);
+    /* Floating buttons */
+    .float-stack{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: grid;
+      gap: 10px;
+      z-index: 999;
+    }
+    .float-btn{
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(15,26,47,.75);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 35px rgba(0,0,0,.40);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .float-btn:hover{
+      transform: translateY(-2px);
+      background: rgba(15,26,47,.92);
+      border-color: rgba(255,255,255,.22);
+    }
+    .float-btn svg{ width: 24px; height: 24px; }
+    .float-btn.whatsapp{ background: rgba(37,211,102,.16); border-color: rgba(37,211,102,.25); }
+    .float-btn.whatsapp:hover{ background: rgba(37,211,102,.22); }
+    .float-btn.instagram{ background: rgba(225,48,108,.14); border-color: rgba(225,48,108,.22); }
+    .float-btn.instagram:hover{ background: rgba(225,48,108,.20); }
+    .float-btn.email{ background: rgba(92,200,255,.12); border-color: rgba(92,200,255,.20); }
+    .float-btn.email:hover{ background: rgba(92,200,255,.18); }
+    .float-btn.hours{ background: rgba(242,193,78,.14); border-color: rgba(242,193,78,.24); }
+    .float-btn.hours:hover{ background: rgba(242,193,78,.20); }
+
+    /* Modal */
+    .modal-backdrop{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index: 1000;
+      padding: 18px;
+    }
+    .modal-backdrop.show{ display:flex; }
+    .modal{
+      width: min(920px, 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(10,14,26,.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modal-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .modal-title{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:-.2px;
+    }
+    .modal-close{
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      cursor:pointer;
+      font-weight: 900;
+    }
+    .modal-body{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      padding: 16px;
+    }
+    .modal-body p{ margin:0; color: var(--muted); }
+    .modal-box{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .modal-box h3{
+      margin:0 0 8px;
+      font-size: 15.5px;
+    }
+    .modal-list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .modal-img{
+      width: 100%;
+      height: 280px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      object-fit: cover;
+      display:block;
+      background: rgba(255,255,255,.03);
+    }
+    .modal-foot{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0 16px 16px;
     }
 
     @media(max-width:900px){
       .grid2,.services{grid-template-columns:1fr}
       .menu{display:none}
+      .modal-body{grid-template-columns: 1fr}
+      .modal-img{height: 220px;}
+      section{padding:48px 0}
     }
   </style>
 </head>
@@ -186,10 +378,11 @@
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <div class="logo"></div>
+      <!-- IMPORTANT: assegura't que el fitxer existeix al repo -->
+      <img src="./logo-ceri.jpg" alt="Logo CERI" class="logo">
       <div>
-        <div>CERI</div>
-        <small style="color:var(--muted)">Centre d'Entrenament i Rehabilitació Individualitzat</small>
+        <div style="font-size:16px; font-weight:950; letter-spacing:.2px;">CERI</div>
+        <small>Centre d'Entrenament i Rehabilitació Individualitzat</small>
       </div>
     </div>
 
@@ -199,82 +392,95 @@
       <a href="#contacte">Contacte</a>
     </nav>
 
-    <a class="btn primary" href="https://wa.me/34640562440" target="_blank">Contacta</a>
+    <a class="btn primary" href="https://wa.me/34640562440" target="_blank" rel="noopener">Contacta</a>
   </div>
 </header>
 
 <main>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap grid2">
-    <div>
-      <h1>CERI</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap grid2">
+      <div>
+        <div class="kicker">💪 Entrenament · 🩺 Rehabilitació · 🧠 Salut</div>
+        <h1>CERI</h1>
+        <p class="subtitle">
+          Centre d'Entrenament i Rehabilitació Individualitzat.
+          Entrenament, salut i recuperació amb una mirada professional i humana.
+        </p>
+        <p class="tagline">Si ho vols viure, <span>has de CERI</span>.</p>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;">
+          <a class="btn primary" href="https://wa.me/34640562440" target="_blank" rel="noopener">📲 Escriu-nos</a>
+          <a class="btn" href="#serveis">Veure serveis</a>
+        </div>
+      </div>
+
+      <div class="panel soft">
+        <b style="font-size:16px;">La nostra manera de fer</b>
+        <ul class="bullets">
+          <li>✅ Valoració individual i objectiu clar</li>
+          <li>✅ Entrenament i rehabilitació amb criteri</li>
+          <li>✅ Acompanyament real i seguiment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÈ ÉS -->
+  <section id="que-es">
+    <div class="wrap">
+      <h2>Què és CERI</h2>
       <p class="subtitle">
-        Centre d'Entrenament i Rehabilitació Individualitzat.  
-        Entrenament, salut i recuperació amb una mirada professional i humana.
-      </p>
-      <p class="tagline">Si ho vols viure, has de CERI.</p>
-    </div>
-
-    <div class="panel soft">
-      <b>La nostra manera de fer</b>
-      <ul class="bullets">
-        <li>Valoració individual</li>
-        <li>Entrenament i rehabilitació amb criteri</li>
-        <li>Acompanyament real</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- QUÈ ÉS -->
-<section id="que-es">
-  <div class="wrap">
-    <h2>Què és CERI</h2>
-    <p class="subtitle">
-      A CERI treballem amb persones, no amb protocols tancats.  
-      Cada cos és diferent, cada procés també.
-    </p>
-  </div>
-</section>
-
-<!-- SERVEIS -->
-<section id="serveis">
-  <div class="wrap">
-    <h2>Serveis</h2>
-    <div class="services">
-      <div class="service">Entrenaments personals</div>
-      <div class="service">Entrenaments grupals</div>
-      <div class="service">Activitats dirigides</div>
-      <div class="service">Fisioteràpia</div>
-      <div class="service">Fisioteràpia sòl pelvià</div>
-      <div class="service">Osteopatia</div>
-      <div class="service">Nutrició i dietètica esportiva</div>
-      <div class="service">Psicologia esportiva</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACTE -->
-<section id="contacte">
-  <div class="wrap grid2">
-    <div class="panel">
-      <h2>Contacte</h2>
-      <p>Carrer Santa Margarida, 18<br>Torroella de Montgrí (Girona)</p>
-      <p>
-        <a href="mailto:ceritorroellademontgri@gmail.com">ceritorroellademontgri@gmail.com</a><br>
-        <a href="https://instagram.com/ceri_torroella" target="_blank">@ceri_torroella</a>
+        A CERI treballem amb persones, no amb protocols tancats. Cada cos és diferent, cada procés també.
+        Som un centre on entrenament, rehabilitació i salut es troben per ajudar-te a recuperar-te, millorar el rendiment i cuidar el teu cos a llarg termini.
       </p>
     </div>
+  </section>
 
-    <div>
-      <iframe
-        src="https://www.google.com/maps?q=Carrer%20Santa%20Margarida%2018%20Torroella%20de%20Montgr%C3%AD%20Girona&output=embed"
-        width="100%" height="300" loading="lazy"></iframe>
+  <!-- SERVEIS -->
+  <section id="serveis">
+    <div class="wrap">
+      <h2>Serveis</h2>
+      <p class="subtitle">Clica un servei per veure’n els detalls (explicació, punts clau i una foto).</p>
+
+      <div class="services" id="servicesGrid">
+        <!-- S'omple amb JS perquè sigui clicable i fàcil d'editar -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- CONTACTE -->
+  <section id="contacte">
+    <div class="wrap grid2">
+      <div class="panel">
+        <h2>Contacte</h2>
+
+        <div class="contact-lines">
+          <p>
+            📍 Carrer Santa Margarida, 18<br>
+            Torroella de Montgrí (Girona)
+          </p>
+
+          <p>
+            ✉️ <a href="mailto:ceritorroellademontgri@gmail.com">ceritorroellademontgri@gmail.com</a><br>
+            📸 <a href="https://instagram.com/ceri_torroella" target="_blank" rel="noopener">@ceri_torroella</a><br>
+            📲 <a href="https://wa.me/34640562440" target="_blank" rel="noopener">WhatsApp: +34 640 56 24 40</a>
+          </p>
+
+          <p>
+            🕒 <b>Horari:</b> Dilluns a divendres 07:00–21:00 · Dissabtes 09:00–13:00
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <iframe
+          src="https://www.google.com/maps?q=Carrer%20Santa%20Margarida%2018%20Torroella%20de%20Montgr%C3%AD%20Girona&output=embed"
+          width="100%" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -284,8 +490,230 @@
   </div>
 </footer>
 
+<!-- FLOATING ICONS -->
+<div class="float-stack" aria-label="Accions ràpides">
+
+  <!-- WhatsApp -->
+  <a class="float-btn whatsapp" href="https://wa.me/34640562440" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <!-- WhatsApp SVG -->
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="#25D366" d="M27.6 4.4A15.2 15.2 0 0 0 3.3 22.8L2 30l7.4-1.9A15.2 15.2 0 0 0 27.6 4.4Z"/>
+      <path fill="#fff" d="M16 5.4A10.6 10.6 0 0 0 6.2 20.6l-.6 3.1 3-0.8A10.6 10.6 0 1 0 16 5.4Zm6.2 14.7c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.1-2.1-.1-.5-.1-1.2-.4-2.1-.8-3.6-1.6-6-5.3-6.2-5.6-.2-.3-1.5-2-1.5-3.8 0-1.8.9-2.7 1.2-3 .3-.3.7-.4 1-.4h.7c.2 0 .5-.1.8.6.3.8 1 2.8 1.1 3 .1.2.1.4 0 .6-.1.2-.2.4-.3.6-.2.2-.3.3-.5.5-.2.2-.4.4-.2.8.2.4.9 1.5 1.9 2.4 1.3 1.1 2.4 1.5 2.8 1.7.4.2.6.2.8 0 .2-.2 1-1.1 1.2-1.5.2-.4.5-.3.8-.2.3.1 2 .9 2.4 1.1.4.2.6.3.7.4.1.1.1.8-.2 1.6Z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a class="float-btn instagram" href="https://instagram.com/ceri_torroella" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#E1306C" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/>
+      <path fill="#fff" d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm5.4-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"/>
+    </svg>
+  </a>
+
+  <!-- Email -->
+  <a class="float-btn email" href="mailto:ceritorroellademontgri@gmail.com" aria-label="Email">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#5CC8FF" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11Z"/>
+      <path fill="#fff" d="M5.8 7.3a.8.8 0 0 0-.8 1.3l6.6 4.5a1.5 1.5 0 0 0 1.7 0L19.9 8.6a.8.8 0 0 0-.8-1.3l-6.4 4.4a.2.2 0 0 1-.2 0L6 7.3h-.2Z"/>
+    </svg>
+  </a>
+
+  <!-- Horaris (obre modal) -->
+  <button class="float-btn hours" id="hoursBtn" aria-label="Horaris" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#F2C14E" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Z"/>
+      <path fill="#1b1406" d="M12.8 6.2a.8.8 0 0 0-1.6 0v6.1c0 .2.1.4.2.6l3.3 2.6a.8.8 0 1 0 1-1.2l-2.9-2.3V6.2Z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 class="modal-title" id="modalTitle">Títol</h3>
+      <button class="modal-close" id="modalClose" aria-label="Tancar">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-box">
+        <h3 id="modalSubtitle">Descripció</h3>
+        <p id="modalText"></p>
+        <ul class="modal-list" id="modalList"></ul>
+      </div>
+
+      <div class="modal-box">
+        <img class="modal-img" id="modalImg" alt="Imatge del servei">
+        <p style="margin-top:10px;color:var(--muted);font-size:13.5px;">
+          *Aquesta foto és un placeholder. Quan vulguis, la canviem per fotos vostres.*
+        </p>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <a class="btn primary" href="https://wa.me/34640562440" target="_blank" rel="noopener">📲 Demanar info per WhatsApp</a>
+      <a class="btn" href="#contacte" id="modalToContact">Contacte</a>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Any
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Dades de serveis (edita textos i fotos quan vulguis)
+  const SERVICES = [
+    {
+      id: "pt",
+      title: "Entrenaments personals",
+      short: "Objectius clars, pla adaptat i seguiment real.",
+      subtitle: "Entrenament 100% individualitzat",
+      text: "Sessions dissenyades segons el teu punt de partida, el teu cos i el teu objectiu (salut, força, rendiment o recuperació).",
+      bullets: ["Valoració inicial", "Progressió segura", "Seguiment i ajustos"],
+      img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=70"
+    },
+    {
+      id: "grup",
+      title: "Entrenaments grupals",
+      short: "Grups reduïts i atenció real.",
+      subtitle: "Entrena en grup sense perdre qualitat",
+      text: "Treball en grup amb supervisió, progressions i correccions. Perfecte per mantenir constància i motivació.",
+      bullets: ["Grups reduïts", "Correccions tècniques", "Ambient motivador"],
+      img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=70"
+    },
+    {
+      id: "nutri",
+      title: "Nutrició i dietètica esportiva",
+      short: "Alimentació adaptada a la teva realitat.",
+      subtitle: "Menjar bé per rendir i recuperar millor",
+      text: "Orientació nutricional pensada per a objectius esportius i de salut, sense extremismes i amb coherència.",
+      bullets: ["Plans adaptats", "Hàbits sostenibles", "Suport i seguiment"],
+      img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=70"
+    },
+    {
+      id: "osteo",
+      title: "Osteopatia",
+      short: "Visió global per millorar mobilitat i benestar.",
+      subtitle: "Tractament manual amb mirada integral",
+      text: "Avaluem el teu cas i treballem la mobilitat, tensions i desequilibris per recuperar funció i confort.",
+      bullets: ["Valoració individual", "Treball manual", "Objectiu: funció i benestar"],
+      img: "https://images.unsplash.com/photo-1606206591513-adbfbdd7aefc?auto=format&fit=crop&w=1200&q=70"
+    },
+    {
+      id: "fisio",
+      title: "Fisioteràpia",
+      short: "Recuperació de lesions amb criteri.",
+      subtitle: "Rehabilitació guiada i progressiva",
+      text: "Tractament i pauta d’exercicis per recuperar el moviment i tornar a la teva vida (o esport) amb seguretat.",
+      bullets: ["Valoració + pla", "Tractament i exercici", "Seguiment de l’evolució"],
+      img: "https://images.unsplash.com/photo-1598971861713-54ad16a7e72e?auto=format&fit=crop&w=1200&q=70"
+    },
+    {
+      id: "solpelvia",
+      title: "Fisioteràpia sòl pelvià",
+      short: "Treball especialitzat i respectuós.",
+      subtitle: "Salut íntima i funcional",
+      text: "Acompanyament professional per millorar la funció del sòl pelvià en diferents etapes i necessitats.",
+      bullets: ["Avaluació especialitzada", "Pla personalitzat", "Respecte i discreció"],
+      img: "https://images.unsplash.com/photo-1554306274-f23873d9a26c?auto=format&fit=crop&w=1200&q=70"
+    },
+    {
+      id: "psico",
+      title: "Psicologia esportiva",
+      short: "Cos i ment: acompanyament emocional i mental.",
+      subtitle: "Rendiment i benestar mental",
+      text: "Eines per gestionar pressió, motivació, confiança i constància. Per competir millor o sentir-te millor entrenant.",
+      bullets: ["Gestió d’estrès", "Motivació i hàbits", "Confiança i focus"],
+      img: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=70"
+    },
+    {
+      id: "dir",
+      title: "Activitats dirigides",
+      short: "Moviment conscient i constància.",
+      subtitle: "Classes per cuidar-te i moure’t bé",
+      text: "Sessions guiades per sumar salut, mobilitat, força i benestar amb una dinàmica clara i segura.",
+      bullets: ["Bona tècnica", "Ritme progressiu", "Ambient cuidat"],
+      img: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=1200&q=70"
+    }
+  ];
+
+  // Render serveis
+  const grid = document.getElementById("servicesGrid");
+  SERVICES.forEach(s => {
+    const div = document.createElement("div");
+    div.className = "service";
+    div.setAttribute("role", "button");
+    div.setAttribute("tabindex", "0");
+    div.dataset.serviceId = s.id;
+    div.innerHTML = `<b>${s.title}</b><span>${s.short}</span>`;
+    div.addEventListener("click", () => openService(s.id));
+    div.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") openService(s.id);
+    });
+    grid.appendChild(div);
+  });
+
+  // Modal handlers
+  const backdrop = document.getElementById("modalBackdrop");
+  const closeBtn = document.getElementById("modalClose");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalSubtitle = document.getElementById("modalSubtitle");
+  const modalText = document.getElementById("modalText");
+  const modalList = document.getElementById("modalList");
+  const modalImg = document.getElementById("modalImg");
+
+  function openModal({title, subtitle, text, bullets, img}) {
+    modalTitle.textContent = title;
+    modalSubtitle.textContent = subtitle || "Detall";
+    modalText.textContent = text || "";
+    modalList.innerHTML = "";
+    (bullets || []).forEach(b => {
+      const li = document.createElement("li");
+      li.textContent = b;
+      modalList.appendChild(li);
+    });
+    modalImg.src = img || "";
+    modalImg.alt = `Imatge: ${title}`;
+    backdrop.classList.add("show");
+    backdrop.setAttribute("aria-hidden", "false");
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    backdrop.classList.remove("show");
+    backdrop.setAttribute("aria-hidden", "true");
+  }
+
+  closeBtn.addEventListener("click", closeModal);
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && backdrop.classList.contains("show")) closeModal();
+  });
+
+  function openService(id){
+    const s = SERVICES.find(x => x.id === id);
+    if (!s) return;
+    openModal({
+      title: s.title,
+      subtitle: s.subtitle,
+      text: s.text,
+      bullets: s.bullets,
+      img: s.img
+    });
+  }
+
+  // Horaris modal
+  document.getElementById("hoursBtn").addEventListener("click", () => {
+    openModal({
+      title: "Horaris CERI",
+      subtitle: "Horari d’obertura",
+      text: "T’esperem al centre dins d’aquest horari. Si necessites una hora concreta, escriu-nos per WhatsApp i t’ho gestionem.",
+      bullets: ["Dilluns a divendres: 07:00 – 21:00", "Dissabtes: 09:00 – 13:00", "Diumenge: tancat (habitualment)"],
+      img: "https://images.unsplash.com/photo-1526401485004-2aa6d0b9a6a9?auto=format&fit=crop&w=1200&q=70"
+    });
+  });
 </script>
 
 </body>
