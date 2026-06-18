@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://EL-TEU-USUARI.github.io/EL-TEU-REPO/sitemap.xml
