@@ -3,100 +3,121 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>CERI | Centre d'Entrenament i Rehabilitació Individualitzat | Torroella de Montgrí</title>
+  <title>CERI Torroella de Montgrí | Fisioteràpia, Osteopatia i Entrenament</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="CERI és un centre a Torroella de Montgrí especialitzat en fisioteràpia, osteopatia, sòl pelvià, nutrició i entrenament personal.">
+  <meta name="description" content="CERI a Torroella de Montgrí: fisioteràpia, osteopatia, sòl pelvià, nutrició i entrenament personal. Tractaments individualitzats per dolor, salut i rendiment.">
 
   <meta name="robots" content="index,follow">
 
   <link rel="canonical" href="https://www.ceritorroellademontgri.com/">
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CERI | Torroella de Montgrí">
-  <meta property="og:description" content="Fisioteràpia, osteopatia, sòl pelvià, nutrició i entrenament personal.">
+  <meta property="og:title" content="CERI Torroella de Montgrí">
+  <meta property="og:description" content="Fisioteràpia, osteopatia, nutrició i entrenament personal.">
   <meta property="og:url" content="https://www.ceritorroellademontgri.com/">
   <meta property="og:image" content="https://www.ceritorroellademontgri.com/logo-ceri.jpg">
 
-  <style>
-    :root{
-      --bg:#0b0f1a;
-      --text:#fff;
-      --muted:rgba(255,255,255,.7);
-      --accent:#f2c14e;
-      --card:rgba(255,255,255,.05);
-      --line:rgba(255,255,255,.12);
-    }
+  <!-- SEO LOCAL (GOOGLE) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "CERI",
+    "url": "https://www.ceritorroellademontgri.com/",
+    "image": "https://www.ceritorroellademontgri.com/logo-ceri.jpg",
+    "telephone": "+34 640562440",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Torroella de Montgrí",
+      "addressRegion": "Girona",
+      "addressCountry": "ES"
+    },
+    "description": "Centre de fisioteràpia, osteopatia, nutrició i entrenament personal.",
+    "areaServed": "Torroella de Montgrí"
+  }
+  </script>
 
+  <style>
     body{
       margin:0;
       font-family:system-ui,Arial;
-      background:var(--bg);
-      color:var(--text);
+      background:#0b0f1a;
+      color:#fff;
+      line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:auto;padding:20px}
 
     header{
       position:sticky;
       top:0;
       background:rgba(0,0,0,.6);
       backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-
-    .wrap{
-      max-width:1100px;
-      margin:auto;
-      padding:20px;
+      border-bottom:1px solid rgba(255,255,255,.1);
     }
 
     nav{
       display:flex;
-      gap:16px;
       justify-content:space-between;
       align-items:center;
     }
 
     .menu a{
-      color:var(--muted);
       margin-right:12px;
+      color:rgba(255,255,255,.7);
     }
 
     .menu a:hover{color:#fff}
 
     .btn{
-      background:var(--accent);
+      background:#f2c14e;
+      color:#111;
       padding:10px 14px;
       border-radius:10px;
       font-weight:700;
-      color:#111;
     }
 
-    h1{font-size:44px;margin:20px 0 10px}
+    h1{font-size:46px;margin:20px 0 10px}
+
+    section{padding:60px 0}
 
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
       gap:14px;
-      margin-top:20px;
     }
 
     .card{
-      background:var(--card);
-      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
       padding:16px;
       border-radius:14px;
       transition:.2s;
     }
 
     .card:hover{
-      transform:translateY(-3px);
+      transform:translateY(-4px);
       border-color:#fff;
     }
 
-    section{padding:60px 0}
+    .cta{
+      display:inline-block;
+      margin-top:20px;
+      background:#f2c14e;
+      color:#111;
+      padding:12px 16px;
+      border-radius:10px;
+      font-weight:800;
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.1);
+      padding:30px 0;
+      color:rgba(255,255,255,.6);
+    }
   </style>
 </head>
 
@@ -105,13 +126,13 @@
 <header>
   <div class="wrap">
     <nav>
-      <div><b>CERI</b></div>
+      <b>CERI</b>
       <div class="menu">
         <a href="#serveis">Serveis</a>
         <a href="#que">Què som</a>
         <a href="#contacte">Contacte</a>
       </div>
-      <a class="btn" href="https://wa.me/34640562440">Contacta</a>
+      <a class="btn" href="https://wa.me/34640562440">WhatsApp</a>
     </nav>
   </div>
 </header>
@@ -119,10 +140,12 @@
 <main class="wrap">
 
 <section>
-  <h1>CERI</h1>
-  <p style="color:var(--muted);max-width:700px;">
-    Centre d'Entrenament i Rehabilitació Individualitzat a Torroella de Montgrí.
+  <h1>CERI Torroella de Montgrí</h1>
+  <p style="opacity:.75;max-width:700px">
+    Centre especialitzat en fisioteràpia, osteopatia, sòl pelvià, nutrició i entrenament personal.
   </p>
+
+  <a class="cta" href="#serveis">Veure serveis</a>
 </section>
 
 <section id="serveis">
@@ -132,27 +155,27 @@
 
     <a class="card" href="fisioterapia.html">
       <b>Fisioteràpia</b>
-      <p style="color:var(--muted)">Dolor i lesions</p>
+      <p>Dolor i lesions</p>
     </a>
 
     <a class="card" href="osteopatia.html">
       <b>Osteopatia</b>
-      <p style="color:var(--muted)">Equilibri corporal</p>
+      <p>Equilibri corporal</p>
     </a>
 
     <a class="card" href="fisio-sol-pelvia.html">
       <b>Sòl pelvià</b>
-      <p style="color:var(--muted)">Salut íntima</p>
+      <p>Salut íntima</p>
     </a>
 
     <a class="card" href="nutricio.html">
       <b>Nutrició</b>
-      <p style="color:var(--muted)">Rendiment i salut</p>
+      <p>Rendiment i salut</p>
     </a>
 
     <a class="card" href="entrenament-personal.html">
-      <b>Entrenament personal</b>
-      <p style="color:var(--muted)">Força i salut</p>
+      <b>Entrenament</b>
+      <p>Força i salut</p>
     </a>
 
   </div>
@@ -160,21 +183,32 @@
 
 <section id="que">
   <h2>Què som</h2>
-  <p style="color:var(--muted);max-width:700px;">
-    Treballem de forma individualitzada. Cada persona és un procés diferent.
+  <p style="opacity:.75;max-width:700px">
+    Treballem amb una visió global del cos i plans completament individualitzats.
   </p>
 </section>
 
 <section id="contacte">
   <h2>Contacte</h2>
+
   <p>
     📍 Torroella de Montgrí<br>
     📲 640 56 24 40<br>
     ✉️ ceritorroellademontgri@gmail.com
   </p>
+
+  <a class="cta" href="https://wa.me/34640562440">
+    Escriure per WhatsApp
+  </a>
 </section>
 
 </main>
+
+<footer>
+  <div class="wrap">
+    © CERI · Centre de rehabilitació a Torroella de Montgrí
+  </div>
+</footer>
 
 </body>
 </html>
